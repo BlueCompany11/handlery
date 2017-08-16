@@ -18,18 +18,20 @@ namespace Test_handlerow
         {
             InitializeComponent();
             w.ValueChanged += button2_Click;
+            MyClass.ValueChangedStatic += button2_Click;
             w.someInt = 10;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             w.Fun();
+            MyClass.FunStat();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show(w.someInt.ToString());
-
+            
         }
     }
 }

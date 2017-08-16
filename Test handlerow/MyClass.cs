@@ -29,6 +29,7 @@ namespace Test_handlerow
 
             }
         }
+
         public event EventHandler ValueChanged;
         public virtual void OnValueChanged(EventArgs e)
         {
@@ -38,7 +39,31 @@ namespace Test_handlerow
 
         public void Fun()
         {
-            ValueChanged.BeginInvoke(null,null,null,null);
+            ValueChanged.BeginInvoke(null, null, null, null);
+        }
+        public static void FunStat()
+        {
+            ValueChangedStatic.BeginInvoke(null, null, null, null);
+        }
+        public static string SomeText;
+        public static string someText
+        {
+            get
+            {
+                return SomeText;
+            }
+            set
+            {
+
+                SomeText = value;
+                OnValueChangedStatic(null);
+            }
+        }
+        public static event EventHandler ValueChangedStatic;
+        public static void OnValueChangedStatic(EventArgs e)
+        {
+            if (ValueChangedStatic != null)
+                ValueChangedStatic(null, e);
         }
     }
 }
